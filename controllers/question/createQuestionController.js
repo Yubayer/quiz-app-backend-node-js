@@ -4,15 +4,16 @@ const quizModel = require("../../models/quizModel")
 
 const createQuestionController = async (req, res) => {
     try {
-        const { mark, options, userId, quizId } = req.body
-        const question = {
+        const { mark, options, userId, quizId, question } = req.body
+        const questionObject = {
             mark,
             user: userId,
             quiz: quizId,
-            options: options
+            options: options,
+            question
         }
 
-        const newQuestion = new questionModel(question)
+        const newQuestion = new questionModel(questionObject)
         await newQuestion.save()
 
         await userModel.findOneAndUpdate(
