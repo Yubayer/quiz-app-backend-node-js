@@ -14,7 +14,7 @@ const loginController = async (req, res) => {
                 expire
             )
 
-            res.json({ token, name: user.name, email: user.email })
+            res.json({ token, name: user.name, email: user.email, id: user._id })
 
         } else res.json({
             statusCode: 500,
